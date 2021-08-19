@@ -26,4 +26,4 @@ def get_random_choice(amount: Optional[int] = Query(None), value: List[str] = Qu
     return random.sample(value, amount)
 
 
-@app.get("/reOrderList")
+# @app.get("/reOrderList")
