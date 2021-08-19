@@ -11,6 +11,12 @@ def index():
     return {"key": "value"}
 
 
-@app.get("/randomNumberBetween")
+# ex /randomNumberBetween/0/10
+@app.get("/randomNumberBetween/{firstValue}-{secondValue}")
 def get_random_number_between_two_values(firstValue: int, secondValue: int):
     return random.randint(firstValue, secondValue)
+
+
+# @app.get("/randomChoice/{listOfValues}")
+# def get_random_choice(listOfValues: list):
+#    return random.choice(listOfValues)
