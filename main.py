@@ -1,24 +1,19 @@
 from fastapi import FastAPI, Query
-from pydantic import BaseModel
+#from pydantic import BaseModel
 import random
 from typing import List, Optional
+import uvicorn
+
 
 # ------------------------------------------------------------------------------
-import asyncio
-from hypercorn.config import Config
-from hypercorn.asyncio import serve
-
-
-config = Config()
-config.bind = ["0.0.0.0:8080"]  # As an example configuration setting
 
 
 def run():
-    asyncio.run(serve(app, Config()))
+    uvicorn.run(app, host='0.0.0.0')
 # -------------------------------------------------------------------------------
 
 
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None)
 
 
 @app.get("/")
