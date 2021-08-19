@@ -36,6 +36,6 @@ def get_random_choice(amount: Optional[int] = Query(None), value: List[str] = Qu
     return random.sample(value, amount)
 
 
-print("Hello World")
-run()
+#print("Hello World")
+# run()
 # @app.get("/reOrderList")
