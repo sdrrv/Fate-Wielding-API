@@ -2,18 +2,8 @@ from fastapi import FastAPI, Query
 #from pydantic import BaseModel
 import random
 from typing import List, Optional
-import uvicorn
 
-
-# ------------------------------------------------------------------------------
-
-
-def run():
-    uvicorn.run(app, host='0.0.0.0')
-# -------------------------------------------------------------------------------
-
-
-app = FastAPI(docs_url=None, redoc_url=None)
+app = FastAPI()
 
 
 @app.get("/")
