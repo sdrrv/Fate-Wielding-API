@@ -3,6 +3,21 @@ from pydantic import BaseModel
 import random
 from typing import List, Optional
 
+# ------------------------------------------------------------------------------
+import asyncio
+from hypercorn.config import Config
+from hypercorn.asyncio import serve
+
+
+config = Config()
+config.bind = ["0.0.0.0:8080"]  # As an example configuration setting
+
+
+def run():
+    asyncio.run(serve(app, Config()))
+# -------------------------------------------------------------------------------
+
+
 app = FastAPI()
 
 
@@ -26,4 +41,6 @@ def get_random_choice(amount: Optional[int] = Query(None), value: List[str] = Qu
     return random.sample(value, amount)
 
 
+print("Hello World")
+run()
 # @app.get("/reOrderList")
