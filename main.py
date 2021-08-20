@@ -13,12 +13,12 @@ def index():
 
 
 # ex /randomNumberBetween/0/10
-@app.get("/randomNumberBetween/{firstValue}/{secondValue}")
+@app.get("/randomNumberBetween")
 def get_random_number_between_two_values(firstValue: int, secondValue: int):
     return random.randint(firstValue, secondValue)
 
 
-@app.get("/randomChoice/")
+@app.get("/randomChoice/{value}")
 def get_random_choice(amount: Optional[int] = Query(None), value: List[str] = Query(None)):
     if not amount:
         amount = 1
