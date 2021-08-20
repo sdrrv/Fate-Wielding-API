@@ -18,7 +18,7 @@ def get_random_number_between_two_values(firstValue: int, secondValue: int):
     return random.randint(firstValue, secondValue)
 
 
-@app.get("/randomChoice/{value}")
+@app.get("/randomChoice")
 def get_random_choice(amount: Optional[int] = Query(None), value: List[str] = Query(None)):
     if not amount:
         amount = 1
