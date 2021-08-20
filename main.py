@@ -37,3 +37,10 @@ def coin_flip():
     coinFace = random.choice(["Head", "Tail"])
     coinImage = tool.get_coin_image(coinFace)
     return tool.get_response_image(coinFace,coinImage)
+
+
+@app.get("/diceRoll")
+def dice_roll():
+    diceRoll = random.randint(1,6)
+    diceImage = tool.get_dice_image(diceRoll)
+    return tool.get_response_image(diceRoll, diceImage)

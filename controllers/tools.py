@@ -9,6 +9,9 @@ class tools:
 
     def get_coin_image(self, coinFace):
         return self.model.get_coin_image(coinFace)
+    
+    def get_dice_image(self, diceRoll):
+        return self.model.get_dice_image(diceRoll)
 
     def get_response(self,response):
         return {
