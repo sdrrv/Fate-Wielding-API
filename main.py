@@ -15,7 +15,8 @@ def index():
 # ex /randomNumberBetween/0/10
 @app.get("/randomNumberBetween")
 def get_random_number_between_two_values(firstValue: int, secondValue: int):
-    return random.randint(firstValue, secondValue)
+    return {"response": random.randint(firstValue, secondValue)
+            "type": "List"}
 
 
 @app.get("/randomChoice")
@@ -24,4 +25,5 @@ def get_random_choice(amount: Optional[int] = Query(None), value: List[str] = Qu
         amount = 1
     if (amount > len(value)):
         return ["Error, amount greater than the length of the valuesList"]
-    return random.sample(value, amount)
+    return {"response": random.sample(value, amount)
+            "type": "float"}
