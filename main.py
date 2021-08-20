@@ -3,28 +3,11 @@ from fastapi import FastAPI, Query
 import random
 from typing import List, Optional
 
-from .controllers.tools import tools
+from controllers.tools import tools
+
 
 tool = tools()
 app = FastAPI()
-
-db = {
-    "coin": }
-
-
-def get_response(response):
-    return {
-        "response": response,
-        "type": str(type(response))
-    }
-
-
-def get_response_image(response, imageURL):
-    return {
-        "response": response,
-        "image": imageURL,
-        "type": str(type(response))
-    }
 
 
 @app.get("/")
@@ -35,20 +18,22 @@ def index():
 
 # ex /randomNumberBetween/0/10
 @app.get("/randomNumberBetween")
-def get_random_number_between_two_values(firstValue: int, secondValue: int):
+def random_number_between_two_values(firstValue: int, secondValue: int):
     response = random.randint(firstValue, secondValue)
-    return get_response(response)
+    return tool.get_response(response)
 
 
 @app.get("/randomChoice")
-def get_random_choice(values: str, amount: Optional[int] = 1):
+def random_choice(values: str, amount: Optional[int] = 1):
     values = tool.parse_string_list(values)
     if (amount > len(values)):
         return ["Error, amount greater than the length of the valuesList"]
     response = random.sample(values, amount)
-    return get_response(response)
+    return tool.get_response(response)
 
 
 @app.get("/coinFlip")
-def get_coin_flip():
-    return get_response(random.choice(["Heads", "Tail"]))
+def coin_flip():
+    coinFace = random.choice(["Head", "Tail"])
+    coinImage = tool.get_coin_image(coinFace)
+    return tool.get_response_image(coinFace,coinImage)
