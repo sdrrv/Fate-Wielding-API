@@ -3,15 +3,26 @@ from fastapi import FastAPI, Query
 import random
 from typing import List, Optional
 
-from tools import tools
+from .controllers.tools import tools
 
 tool = tools()
 app = FastAPI()
+
+db = {
+    "coin": }
 
 
 def get_response(response):
     return {
         "response": response,
+        "type": str(type(response))
+    }
+
+
+def get_response_image(response, imageURL):
+    return {
+        "response": response,
+        "image": imageURL,
         "type": str(type(response))
     }
 
