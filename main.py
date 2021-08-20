@@ -36,3 +36,8 @@ def get_random_choice(values: str, amount: Optional[int] = 1):
         return ["Error, amount greater than the length of the valuesList"]
     response = random.sample(values, amount)
     return get_response(response)
+
+
+@app.get("/coinFlip")
+def get_coin_flip():
+    return get_response(random.choice(["Heads", "Tail"]))
