@@ -52,5 +52,5 @@ def dice_roll():
 @app.get("/shuffle")
 def shuffle(List: str):
     res = tool.parse_string_list(List)
-    return tool.get_shuffled_list(res)
+    return tool.get_response(tool.get_shuffled_list(res))
 
