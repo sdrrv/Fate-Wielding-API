@@ -7,7 +7,7 @@ class tools:
         self.model = model()
 
     def parse_string_list(self, lister):
-        return lister.split(",")
+        return lister[1:-1].split(",")
 
     def get_coin_image(self, coinFace):
         return self.model.get_coin_image(coinFace)
