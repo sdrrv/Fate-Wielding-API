@@ -13,7 +13,10 @@ app = FastAPI()
 @app.get("/")
 def index():
     return {"NAME": "Fate Wielding API",
-            "VERSION": "0.0.2"}
+            "VERSION": "0.0.2",
+            "AUTHOR": "Duarte Elvas",
+            "AUTHOR_WEBSITE": "https://web.tecnico.ulisboa.pt/duartecelvas"
+            }
 
 
 # ex /randomNumberBetween/0/10
@@ -36,11 +39,18 @@ def random_choice(values: str, amount: Optional[int] = 1):
 def coin_flip():
     coinFace = random.choice(["Head", "Tail"])
     coinImage = tool.get_coin_image(coinFace)
-    return tool.get_response_image(coinFace,coinImage)
+    return tool.get_response_image(coinFace, coinImage)
 
 
 @app.get("/diceRoll")
 def dice_roll():
-    diceRoll = random.randint(1,6)
+    diceRoll = random.randint(1, 6)
     diceImage = tool.get_dice_image(diceRoll)
     return tool.get_response_image(diceRoll, diceImage)
+
+
+@app.get("/shuffle")
+def shuffle(List: str):
+    res = tool.parse_string_list(List)
+    return tool.get_shuffled_list(res)
+
